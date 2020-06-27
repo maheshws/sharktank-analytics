@@ -1,0 +1,179 @@
+/* Giving the body the specified background color, adding font sizes for the h1 and h3 elements we'll be using */
+body {
+    background: white;
+}
+
+h1 {
+    font-size: 80px;
+}
+h2{
+    text-align: center;
+    text-decoration: underline;
+    color:black;
+    text-decoration-color:#4aaaa5;
+    font-family:serif;
+    font-weight:400;
+}
+h3 {
+    font-size: 30px;
+    font-weight: bold;
+}
+h4 {
+    font-weight: bold;
+}
+.data{
+    text-align: left;
+    color:#4aaaa5 ;
+    margin-left: 15px;
+}
+
+p.plot_category{
+    text-align: center;
+    color:black;
+}
+.header {
+    color: #4aaaa5!important;
+    }
+h2.title{
+    text-align: center;
+    text-decoration: underline;
+    color: #4aaaa5;
+    text-decoration-color: black;
+    font-family: cursive;
+    font-weight: 400;
+}
+h2.header{
+    text-align: center;
+    text-decoration: underline;
+    color: #4aaaa5;
+    text-decoration-color: black;
+    font-family: cursive;
+    font-weight: 400;
+}
+#logo{
+position:fixed;
+top:0;
+left:0;
+}
+
+#myheader
+{
+    background-image: url("https://cdn.ecoustics.com/db0/wblob/17BA35E873D594/23A0/40C77/v-IHLpnBn8dKcHcPEAwSYimFPvuVeWfha7PVWy2ILgU/beosound-balance-with-bang-olufsen-speakers.jpg");
+    background-color: #cccccc;
+}
+/*.navbar-inverse {
+    background-color: white;
+    border:none;
+}
+.navbar-brand {
+    color: white!important;
+    background-color: #4aaaa5;
+}
+.navbar-brand:hover {
+    color: white!important;
+    background-color: #4aaaa5!important;
+}
+.navbar-brand:focus {
+    color: white!important;
+    background-color: #4aaaa5!important;
+}
+.collapse navbar-collapse {
+    float:right!important;
+}
+.navbar-inverse .navbar-nav>li>a:hover {
+    color: black!important;
+}
+.navbar-nav .open .dropdown-menu>li>a:hover {
+    color: black!important;
+}
+.navbar-nav .open .dropdown-menu>li>a:focus {
+    background-color:lightgray!important;
+    color: black!important;
+}
+.navbar-inverse .navbar-nav>li>a:focus {
+    background-color:lightgray!important;
+    color: black!important;
+}
+.navbar-toggle {
+    background-color:lightgray!important;
+}*/
+
+table{
+    margin-left: 15px;
+    border-style: outset;
+    border-width: 5px;
+
+}
+
+th {
+    margin: 8px;
+    width:130px;
+
+}
+
+td {
+    margin: 10px;
+}
+
+/* Getting rid of the default link styles here */
+/*.navbar li a {
+    color: #000;
+    text-decoration: none;
+}*/
+
+
+/* Giving the .post element margin on 3 sides */
+.post {
+    margin-top: 50px;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+.image {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 25%;
+}
+
+.image:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+.figcaption {
+  text-align: center;
+    color:black;
+}
+
+/* Adding media queries to show the drop-down, and hide the navbar when the screen is smaller than 480 pixels */
+@media (max-width: 480px) {
+    .navbar li {
+        padding: 10px;
+    }
+
+    .post {
+        margin-right: 30px;
+        margin-left: 30px;
+    }
+
+    .navbar ul {
+        visibility: visible;
+    }
+
+    #nav-select {
+        visibility: visible;
+    }
+}
+/* On screens that are 992px wide or less, go from four columns to two columns */
+@media screen and (max-width: 992px) {
+    .column {
+        width: 50%;
+    }
+}
+
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Trypod-Podcast Data Interpretation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">#}
+{#    <script src="https://d3js.org/d3.v5.min.js"></script>#}
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3-scale-radial.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+<div class="content">
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="box">
+                <div id="myheader" class="jumbotron text-center">
+                        <div id="logo">
+                            <img src="../static/Images/Logo.png" height="150" width="100" postion:fixed; top:0; left:0; ></img>
+                        </div>
+                        <div postion:fixed; top:10; right:5; style="float: right">
+                            <label for="cars">Select a podcast Category:</label>
+                                    <select name="podcasts" id="podcasts">
+                                      <option value="arts">Arts</option>
+                                      <option value="music">Music</option>
+                                      <option value="education">Education</option>
+                                      <option value="technology">Technology</option>
+                                    </select>
+                        </div>
+                        <h1>We try podcasts so you don't have to!!</h1>
+                </div>
+                    <div class="box">
+                       <h3>Latest Mars News:</h3>
+                    </div>
+        </div>
+    </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-8 ">
+            <div id="my_dataviz">
+          <!-- We append our chart here. -->
+            </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="../static/js/app.js"></script>
+</body>
+</html>
