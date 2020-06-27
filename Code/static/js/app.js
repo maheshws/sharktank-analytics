@@ -15,11 +15,6 @@ var svg = d3.select("#my_dataviz")
 
 d3.json('http://127.0.0.1:5000/api/v1/podcasts/categories/all', function(data) {
 console.log(data)
-  //var d.category = data.map(data => data.category)
-  //var d.reviews = data.map(data => data.reviews)
-  //console.log(d.category)
-  //console.log(d.reviews)
-  // X scale: common for 2 data series
   var x = d3.scaleBand()
       .range([0, 2 * Math.PI])    // X axis goes from 0 to 2pi = all around the circle. If I stop at 1Pi, it will be around a half circle
       .align(0)                  // This does nothing
