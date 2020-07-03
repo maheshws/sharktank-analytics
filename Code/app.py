@@ -1,16 +1,17 @@
 from flask import Flask, render_template, redirect
-from flask_pymongo import PyMongo
+# from flask_pymongo import PyMongo
 #import scrape_mars
 import sqlite3
 from flask import g , request,jsonify
-from flask_sqlalchemy import SQLAlchemy
+# from flask_sqlalchemy import SQLAlchemy
 import os.path
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-db_path = os.path.join(BASE_DIR, "static\\data\\podcast.sqlite")
+# db_path = os.path.join(BASE_DIR, "static\\data\\podcast.sqlite")
+db_path = os.path.join(BASE_DIR, "static/data/sharktank.db")
 
 #file_path = os.path.abspath(os.getcwd())+"\data\database.db"
-DATABASE = 'sqlite:///static\data\podcast.sqlite'
+# DATABASE = 'sqlite:///static\data\podcast.sqlite'
 #
 # def get_db():
 #     db = getattr(g, '_database', None)
@@ -56,12 +57,12 @@ def home():
 
 
 # Route that will trigger the scrape function
-@app.route('/api/v1/podcasts/categories/all', methods=['GET'])
+@app.route('/api/v1/deals/dealsbyshark/all', methods=['GET'])
 def api_all():
      conn = sqlite3.connect(db_path)
      conn.row_factory = dict_factory
      cur = conn.cursor()
-     category_ncount = cur.execute('select count(podcast_id) as reviews , category from categories group by category order by category;').fetchall()
+     category_ncount = cur.execute('select * from DealsbySharks;').fetchall()
      return jsonify(category_ncount)
 
 
