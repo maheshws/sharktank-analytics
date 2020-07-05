@@ -1,0 +1,63 @@
+{
+  "name": "SHARKTANK",
+  "img": "../static/Images/Unknown.jpg",
+  "children": [
+    {
+      "name": "Big Sharks",
+      "children": [
+        {
+          "hero": "Mr. Wonderful",
+          "name": "Kevin O'Leary",
+          "link": "https://en.wikipedia.org/wiki/Kevin_O%27Leary",
+          "img": "../static/Images/Kevin.png",
+          "size": 40000
+        },
+        {
+          "hero": "Biggest Shark",
+          "name": "Mark Cuban",
+          "link": "https://en.wikipedia.org/wiki/Mark_Cuban",
+          "img": "../static/Images/Mark.png",
+          "size": 40000
+        }
+      ]
+    },
+    {
+      "name": "Small Sharks",
+      "children": [
+        {
+          "hero": "Mr. Cyber Security",
+          "name": "Robert Herjavec",
+          "link": "https://en.wikipedia.org/wiki/Robert_Herjavec",
+          "img": "../static/Images/Robert.png",
+          "size": 40000
+        },
+        {
+          "hero": "Mr. Fashion",
+          "name": "Daymond John",
+          "link": "https://en.wikipedia.org/wiki/Daymond_John",
+          "img": "../static/Images/Daymond.png",
+          "size": 40000
+        }
+      ]
+    },
+    {
+      "name": "Female Sharks",
+      "children": [
+        {
+          "hero": "Miss QVC",
+          "name": "Lori Greiner",
+          "link": "https://en.wikipedia.org/wiki/Lori_Greiner",
+          "img": "../static/Images/Lori.png",
+          "size": 40000
+        },
+        {
+          "hero": "Miss Real Estate",
+          "name": "Barbara Corcoran",
+          "link": "https://en.wikipedia.org/wiki/Barbara_Corcoran",
+          "img": "../static/Images/Barbara.png",
+          "size": 40000
+        }
+      ]
+    }
+  ]
+}

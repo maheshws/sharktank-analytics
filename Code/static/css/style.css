@@ -1,27 +1,47 @@
 /* Giving the body the specified background color, adding font sizes for the h1 and h3 elements we'll be using */
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400,600);
+      body {font-family: "Source Code Pro", Consolas, monaco, monospace; line-height: 160%; font-size: 16px;  margin: 0; }
+      path.link {
+        fill: none;
+        stroke-width: 2px;
+      }
+      .node:not(:hover) .nodetext {
+        display: none;
+      }
+      h1 { font-size: 36px; margin: 10px 0; text-transform: uppercase; font-weight: normal;}
+      h2, h3 { font-size: 18px; margin: 5px 0 ; font-weight: normal;}
+      header {padding: 20px; position: absolute; top: 0; left: 0;}
+      a:link { color: #EE3124; text-decoration: none;}
+      a:visited { color: #EE3124; }
+      a:hover { color: #A4CD39; text-decoration: underline;}
+      a:active { color: #EE3124; }
 body {
     background: white;
 }
+#summary-table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
-h1 {
-    font-size: 80px;
+#summary-table td, #summary-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
 }
-h2{
-    text-align: center;
-    text-decoration: underline;
-    color:black;
-    text-decoration-color:#4aaaa5;
-    font-family:serif;
-    font-weight:400;
+
+#summary-table tr:nth-child(even){background-color: #f2f2f2;}
+
+#summary-table tr:hover {background-color: #ddd;}
+
+#summary-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
 }
-h3 {
-    font-size: 30px;
-    font-weight: bold;
-}
-h4 {
-    font-weight: bold;
-}
-.data{
+
+/*.data{
     text-align: left;
     color:#4aaaa5 ;
     margin-left: 15px;
@@ -58,45 +78,12 @@ left:0;
 
 #myheader
 {
-    background-image: url("https://cdn.ecoustics.com/db0/wblob/17BA35E873D594/23A0/40C77/v-IHLpnBn8dKcHcPEAwSYimFPvuVeWfha7PVWy2ILgU/beosound-balance-with-bang-olufsen-speakers.jpg");
+    background-image: url("https://img.buzzfeed.com/buzzfeed-static/static/2018-01/12/13/asset/buzzfeed-prod-fastlane-02/sub-buzz-8267-1515781129-15.jpg?downsize=700%3A%2A&output-quality=auto&output-format=auto&output-quality=auto&output-format=auto&downsize=360:*");
     background-color: #cccccc;
+    height: 100%;
+    width: 100%;
 }
-/*.navbar-inverse {
-    background-color: white;
-    border:none;
-}
-.navbar-brand {
-    color: white!important;
-    background-color: #4aaaa5;
-}
-.navbar-brand:hover {
-    color: white!important;
-    background-color: #4aaaa5!important;
-}
-.navbar-brand:focus {
-    color: white!important;
-    background-color: #4aaaa5!important;
-}
-.collapse navbar-collapse {
-    float:right!important;
-}
-.navbar-inverse .navbar-nav>li>a:hover {
-    color: black!important;
-}
-.navbar-nav .open .dropdown-menu>li>a:hover {
-    color: black!important;
-}
-.navbar-nav .open .dropdown-menu>li>a:focus {
-    background-color:lightgray!important;
-    color: black!important;
-}
-.navbar-inverse .navbar-nav>li>a:focus {
-    background-color:lightgray!important;
-    color: black!important;
-}
-.navbar-toggle {
-    background-color:lightgray!important;
-}*/
+
 
 table{
     margin-left: 15px;
@@ -113,7 +100,7 @@ th {
 
 td {
     margin: 10px;
-}
+}*/
 
 /* Getting rid of the default link styles here */
 /*.navbar li a {

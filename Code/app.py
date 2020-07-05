@@ -7,10 +7,10 @@ from flask_sqlalchemy import SQLAlchemy
 import os.path
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-db_path = os.path.join(BASE_DIR, "static\\data\\podcast.sqlite")
+db_path = os.path.join(BASE_DIR, "static\\data\\sharktank.sqlite")
 
 #file_path = os.path.abspath(os.getcwd())+"\data\database.db"
-DATABASE = 'sqlite:///static\data\podcast.sqlite'
+#DATABASE = 'sqlite:///static\data\podcast.sqlite'
 #
 # def get_db():
 #     db = getattr(g, '_database', None)
@@ -26,7 +26,7 @@ DATABASE = 'sqlite:///static\data\podcast.sqlite'
 
 # Create an instance of Flask
 app = Flask(__name__)
-
+app.config['JSON_SORT_KEYS'] = False
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///static\data\podcast.sqlite'
 # db = SQLAlchemy(app)
 #
@@ -56,14 +56,86 @@ def home():
 
 
 # Route that will trigger the scrape function
-@app.route('/api/v1/podcasts/categories/all', methods=['GET'])
+@app.route('/api/v1/deals/dealsbyshark/all', methods=['GET'])
 def api_all():
      conn = sqlite3.connect(db_path)
      conn.row_factory = dict_factory
      cur = conn.cursor()
-     category_ncount = cur.execute('select count(podcast_id) as reviews , category from categories group by category order by category;').fetchall()
+     category_ncount = cur.execute('select * from DealsbySharks;').fetchall()
+     cur.close()
+     conn.close()
      return jsonify(category_ncount)
 
+@app.route('/api/v1/deals/dealsbycategory/all', methods=['GET'])
+def api_alldealsbycategory():
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = dict_factory
+    cur = conn.cursor()
+    alldealsbycategory = cur.execute('SELECT * FROM DealsbyCategory;').fetchall()
+    cur.close()
+    conn.close()
+    return jsonify(alldealsbycategory)
+
+@app.route('/api/v1/deals/dealsbyseason/all', methods=['GET'])
+def api_alldealsbyseason():
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = dict_factory
+    cur = conn.cursor()
+    alldealsbyseason = cur.execute('SELECT * FROM DealsbySeason;').fetchall()
+    cur.close()
+    conn.close()
+    return jsonify(alldealsbyseason)
+
+@app.route('/api/v1/deals/dealsbygender/all', methods=['GET'])
+def api_alldealsbygender():
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = dict_factory
+    cur = conn.cursor()
+    alldealsbygender = cur.execute('SELECT *  FROM DealsGenderDistribution;').fetchall()
+    cur.close()
+    conn.close()
+    return jsonify(alldealsbygender)
+
+@app.route('/api/v1/deals/dealsbycategoryandgender/all', methods=['GET'])
+def api_alldealsbycategoryandgender():
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = dict_factory
+    cur = conn.cursor()
+    alldealsbycategoryandgender = cur.execute('SELECT * FROM DealsbyCategoryandGender;').fetchall()
+    cur.close()
+    conn.close()
+    return jsonify(alldealsbycategoryandgender)
+
+@app.route('/api/v1/deals/dealsbyshark/<sharkname>', methods=['GET'])
+def api_sharkportfolio(sharkname):
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = dict_factory
+    cur = conn.cursor()
+    query = "SELECT * FROM DealsbySharks where Sharks=?"
+    sharkportfolio = cur.execute(query,(sharkname,)).fetchall()
+    cur.close()
+    conn.close()
+    return jsonify(sharkportfolio)
+
+@app.route('/api/v1/deals/sharkscategory/all', methods=['GET'])
+def api_allcategoryforsharks():
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = dict_factory
+    cur = conn.cursor()
+    allcategoryforsharks = cur.execute("SELECT * FROM Temp").fetchall()
+    cur.close()
+    conn.close()
+    return jsonify(allcategoryforsharks)
+
+@app.route('/api/v1/deals/sharkscategory/summary', methods=['GET'])
+def api_alldealssummary():
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = dict_factory
+    cur = conn.cursor()
+    alldealssummary = cur.execute("SELECT * FROM Summary").fetchall()
+    cur.close()
+    conn.close()
+    return jsonify(alldealssummary)
 
 if __name__ == "__main__":
     app.run(debug=True)
