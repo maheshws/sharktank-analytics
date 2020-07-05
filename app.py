@@ -7,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os.path
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-db_path = os.path.join(BASE_DIR, "static\\data\\sharktank.sqlite")
+db_path = os.path.join(BASE_DIR, "db\\sharktank.sqlite")
 
 #file_path = os.path.abspath(os.getcwd())+"\data\database.db"
 #DATABASE = 'sqlite:///static\data\podcast.sqlite'
@@ -138,4 +138,4 @@ def api_alldealssummary():
     return jsonify(alldealssummary)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
