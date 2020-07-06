@@ -91,7 +91,7 @@ def api_alldealsbygender():
     conn = sqlite3.connect(db_path)
     conn.row_factory = dict_factory
     cur = conn.cursor()
-    alldealsbygender = cur.execute('SELECT *  FROM DealsGenderDistribution;').fetchall()
+    alldealsbygender = cur.execute('SELECT Gender,DealsProposed,DealsClosed,PercentClosed FROM DealsGenderDistribution;').fetchall()
     cur.close()
     conn.close()
     return jsonify(alldealsbygender)
@@ -138,4 +138,5 @@ def api_alldealssummary():
     return jsonify(alldealssummary)
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port,debug=False)
