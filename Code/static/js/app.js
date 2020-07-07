@@ -33,7 +33,7 @@ d3.csv( "../static/data/SharkTank.csv", function(data) {
   var sharkDim = ndx.dimension(function (d) { return d["Shark"]; });
   var sharkgroup = sharkDim.group();
 
-  var sharkCatDim = ndx.dimension(function (d) {  return d["Category"]; });
+  var sharkCatDim = ndx.dimension(function (d) {   return d["Category"]; });
   var sharkCatgroup = sharkCatDim.group();
 
   // On Click of Category display table
@@ -62,6 +62,30 @@ d3.csv( "../static/data/SharkTank.csv", function(data) {
 
   };
 
+  function renderSharkTable(key){
+    d3.csv("../static/data/Shark.csv",function(data) {
+      // Empty the table
+      body.html("")
+
+      // Filter based on the selection
+      function filterK(sharkData) {
+        return sharkData.Shark === key;
+      }
+      var filteredData = data.filter(filterK);
+
+      // appending <tr> and <td>
+      filteredData.forEach(function (record) {
+        Object.entries(record).forEach(function ([key, value]) {
+            var row = body.append('tr')
+                          .text(key)
+                          .append('td')
+                          .text(value)
+        });
+     });
+
+    })
+
+  };
 
 
   // Drawing the chart
@@ -69,6 +93,11 @@ d3.csv( "../static/data/SharkTank.csv", function(data) {
     .dimension(sharkDim)
     .group(sharkgroup)
     .elasticX(true);
+
+    sharkchart.on('filtered.monitor', function(chart, filter) {
+      // console.log(filter);
+      renderSharkTable(filter);
+    });
 
   sharkCatchart
     .height(400)
@@ -83,8 +112,6 @@ d3.csv( "../static/data/SharkTank.csv", function(data) {
   });
 
   
-    // dc.renderAll();
-    sharkchart.render();
-    sharkCatchart.render();
+    dc.renderAll();
 
 });
