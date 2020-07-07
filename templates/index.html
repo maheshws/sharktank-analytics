@@ -58,43 +58,82 @@
           </div>
         </div>
       </div>
+      <br>
       <div class="row" >
-        <div class="col-sm-12 col-md-8 ">
+        <div class="col-sm-12 col-md-8 " style="float: left">
             <span id="d3v4VarVer">
-        <div id="my_dataviz">
-          <strong>Select a Shark</strong>
-          <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
-          <a class="reset" href="javascript:sharkchart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-          <div class="clearfix"></div>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8">
-                <div id="my_dataviz1">
-                  <strong>Select a Category</strong>
+                <div id="my_dataviz" style="padding-top:20px;">
+                  <strong>Select a Shark</strong>
                   <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
-                  <a class="reset" href="javascript:sharkCatchart.filterAll();dc.redrawAll();"
-                    style="display: none;">reset</a>
+                  <a class="reset" href="javascript:sharkchart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
                   <div class="clearfix"></div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-              <div id="table-area" class="">
-                <table id="summary-table" >
-                  <tbody></tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-8">
+                        <div id="my_dataviz1" style="text-align: left">
+                          <strong>Select a Category</strong>
+                          <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
+                          <a class="reset" href="javascript:sharkCatchart.filterAll();dc.redrawAll();"
+                            style="display: none;">reset</a>
+                          <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div id="table-area" class="">
+                        <table id="summary-table" >
+                          <tbody></tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </span>
         </div>
-      </span>
+        <div class="col-sm-12 col-md-4" style="float: right" style="padding-top: 20px">
+            <label for="sharktankviews">Select Other Shark Tank Analytical Views:</label>
+            <select id="shrkviews" onchange="somefunc()">
+                <option value="None">-- Select/Reset --</option>
+                <option value="DealsProposed">Deal Distribution by Gender/Mixed Teams</option>
+                <option value="DealsClosedbyGender">Deal Closed Distribution by Gender/Mixed Teams</option>
+                <option value="updateSeasonBar">Success Rate by Season</option>
+                <option value="updateSectorGenderBar">Sector Distribution by Gender</option>
+            </select>
+            <script>
+                function somefunc() {
+                    //alert("I am here");
+                    var e = document.getElementById("shrkviews");
+                    var result = e.options[e.selectedIndex].value;
+                    if (result=="DealsProposed")
+                    {
+                        updatePie('DealsProposed');
+                    }
+                    else if (result=="DealsClosedbyGender")
+                    {
+                        updatePie('DealsClosedbyGender');
+                    }
+                    else if (result=="updateSeasonBar")
+                    {
+                        updateSeasonBar();
+                    }
+                    else if (result=="updateSectorGenderBar")
+                    {
+                        updateSectorGenderBar();
+                    }
+                    else{
+                        clearPie();
+                    }
+                    //alert(result);
+                }
+            </script>
+            {#<button id="DP" title="Deal Count pitched by Gender/Mixed Teams" onclick="updatePie('DealsProposed')">Deals Proposed </button>
+            <button id="DC" title="Deals Closed in percentage by Gender/Mixed Teams" onclick="updatePie('DealsClosedbyGender')">Deals Closed </button>
+            <button id="DS" title="Success Rate by Season" onclick="updateSeasonBar()">Performance </button>
+            <button id="SG" title="Sector Distribution by Gender" onclick="updateSectorGenderBar()">Category Distribution</button>#}
+            <div id="pie_dataviz"></div>
         </div>
-      </div>
     </div>
-    <button id="DP" onclick="updatePie('DealsProposed')">Deals Proposed</button>
-    <button id="DC" onclick="updatePie('DealsClosedbyGender')">Deals Closed</button>
-    <button id="DD"  onclick="updatePie('DealsbyPercentage')">Distribution</button>
-    <div id="pie_dataviz"></div>
+  </div>
   </div>
 </body>
 <script type="text/javascript" src="../static/js/app.js"></script>

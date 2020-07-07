@@ -41,72 +41,7 @@ body {
   color: white;
 }
 
-/*.data{
-    text-align: left;
-    color:#4aaaa5 ;
-    margin-left: 15px;
-}
 
-p.plot_category{
-    text-align: center;
-    color:black;
-}
-.header {
-    color: #4aaaa5!important;
-    }
-h2.title{
-    text-align: center;
-    text-decoration: underline;
-    color: #4aaaa5;
-    text-decoration-color: black;
-    font-family: cursive;
-    font-weight: 400;
-}
-h2.header{
-    text-align: center;
-    text-decoration: underline;
-    color: #4aaaa5;
-    text-decoration-color: black;
-    font-family: cursive;
-    font-weight: 400;
-}
-#logo{
-position:fixed;
-top:0;
-left:0;
-}
-
-#myheader
-{
-    background-image: url("https://img.buzzfeed.com/buzzfeed-static/static/2018-01/12/13/asset/buzzfeed-prod-fastlane-02/sub-buzz-8267-1515781129-15.jpg?downsize=700%3A%2A&output-quality=auto&output-format=auto&output-quality=auto&output-format=auto&downsize=360:*");
-    background-color: #cccccc;
-    height: 100%;
-    width: 100%;
-}
-
-
-table{
-    margin-left: 15px;
-    border-style: outset;
-    border-width: 5px;
-
-}
-
-th {
-    margin: 8px;
-    width:130px;
-
-}
-
-td {
-    margin: 10px;
-}*/
-
-/* Getting rid of the default link styles here */
-/*.navbar li a {
-    color: #000;
-    text-decoration: none;
-}*/
 
 
 /* Giving the .post element margin on 3 sides */
@@ -129,7 +64,58 @@ td {
   text-align: center;
     color:black;
 }
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
 
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.divider{
+    width:10px;
+    height:auto;
+    display:inline-block;
+}
 /* Adding media queries to show the drop-down, and hide the navbar when the screen is smaller than 480 pixels */
 @media (max-width: 480px) {
     .navbar li {

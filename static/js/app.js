@@ -90,7 +90,7 @@ function update() {
           .on( 'click', function (d) {
               d3v3.select("h1").html(d.hero);
               d3v3.select("h2").html(d.name);
-              d3v3.select("h3").html ("Take me to " + "<a href='" + d.link + "' >"  + d.hero + " web page ⇢"+ "</a>" );
+              d3v3.select("h3").html ("Take me to " + "<a href='" + d.link + "'+ target='_blank' >"  + d.hero + " web page ⇢"+ "</a>" );
               change(d.name);
            })
           .on( 'mouseenter', function() {
@@ -206,7 +206,7 @@ var svg = d3v4.select("#my_dataviz")
   var body = d3v4.select("#summary-table>tbody");
 
 // Reading the data
-d3v4.json( 'https://host:5000/api/v1/deals/sharkscategory/all', function(data) {
+d3v4.json( 'http://localhost:5000/api/v1/deals/sharkscategory/all', function(data) {
 
   console.log(data);
 
@@ -223,7 +223,7 @@ d3v4.json( 'https://host:5000/api/v1/deals/sharkscategory/all', function(data) {
 
   // On Click of Category display table
   function renderTable(key){
-    d3v4.json("https://host:5000/api/v1/deals/sharkscategory/summary",function(data) {
+    d3v4.json("http://localhost:5000/api/v1/deals/sharkscategory/summary",function(data) {
       // Empty the table
       console.log(data);
       body.html("")
@@ -249,7 +249,7 @@ d3v4.json( 'https://host:5000/api/v1/deals/sharkscategory/all', function(data) {
   };
 
   function renderSharkTable(key){
-    d3v4.json("https://host:5000/api/v1/deals/dealsbyshark/portfolio",function(data) {
+    d3v4.json("http://localhost:5000/api/v1/deals/dealsbyshark/portfolio",function(data) {
       // Empty the table
       body.html("")
 
@@ -330,15 +330,35 @@ var color = d3.scale.ordinal()
     path.transition().duration(500).attr("d", arc); // redrawing the path with a smooth transition
 })
 }
+
+function paintPieDataViz()
+{
+    alert("I am here");
+    var e = document.getElementById("shrkviews");
+    var result = e.options[e.selectedIndex].value;
+    alert(result); //ID002
+}
+
 function updatePie(driver){
-if (driver=="DealsProposed")
-{
-   d3v4.json("https://host:5000/api/v1/deals/dealsbygender/all",function(data) {
+clearPie();
+   d3v4.json("http://localhost:5000/api/v1/deals/dealsbygender/all",function(data) {
 console.log(data);
 var values = [];
 var labelSet = ["Female","Male","Mixed Teams"];
 data.forEach(function(val){
-    values.push(val.DealsProposed);
+    if (driver=="DealsProposed")
+    {
+        values.push(val.DealsProposed);
+    }
+    else if (driver=="DealsClosedbyGender")
+    {
+        values.push(val.PercentClosed);
+    }
+    else
+    {
+        values.push(val.PercentClosed);
+    }
+
 });
 var data = [{
   type: "pie",
@@ -355,52 +375,122 @@ var layout = [{
 Plotly.newPlot('pie_dataviz', data, layout)
 })
 }
-if (driver=="DealsClosedbyGender")
-{
-   d3v4.json("https://host:5000/api/v1/deals/dealsbygender/all",function(data) {
+
+function updateSeasonBar(){
+clearPie();
+   d3v4.json("http://localhost:5000/api/v1/deals/dealsbyseason/all",function(data) {
 console.log(data);
-var values = [];
-var labelSet = ["Female","Male","Mixed Teams"];
+var x1 = [];
+var y1 = [];
+var y2 =[];
 data.forEach(function(val){
-    values.push(val.DealsClosed);
+    x1.push(val.Season);
+    y1.push(val.DealsOffered);
+    y2.push(val.ClosedDeals);
+
 });
-var data = [{
-  type: "pie",
-  values: values,
-  labels: labelSet,
-  textinfo: "label",
-  insidetextorientation: "radial",
-  automargin: true
-}]
-var layout = [{
-  height: 400,
-  width: 400
-}]
+var trace1 = {
+  x: x1,
+  y: y1,
+  type: 'bar',
+  name: 'Deals Offered',
+  marker: {
+    color: 'rgb(49,130,189)',
+    opacity: 0.7,
+  }
+};
+
+var trace2 = {
+  x: x1,
+  y: y2,
+  type: 'bar',
+  name: 'Deals Closed',
+  marker: {
+    color: 'rgb(16, 227, 171)',
+    opacity: 0.5
+  }
+};
+
+var data = [trace1, trace2];
+
+var layout = {
+  height: 500,
+  width: 620,
+  title: '11 Season of Deals Offered vs. Closed',
+  xaxis: {
+    tickangle: -45
+  },
+  barmode: 'group'
+};
+
 Plotly.newPlot('pie_dataviz', data, layout)
 })
 }
-if (driver=="DealsbyPercentage")
-{
-   d3v4.json("https://host:5000/api/v1/deals/dealsbygender/all",function(data) {
+
+
+function updateSectorGenderBar(){
+clearPie();
+   d3v4.json("http://localhost:5000/api/v1/deals/sectorgender/summary",function(data) {
 console.log(data);
-var values = [];
-var labelSet = ["Female","Male","Mixed Teams"];
+var x1 = [];
+var y1 = [];
+var y2 =[];
+var y3 =[];
 data.forEach(function(val){
-    values.push(val.PercentClosed);
+    x1.push(val.Category);
+    y1.push(val.Female);
+    y2.push(val.Male);
+    y3.push(val.MixedTeam);
+
 });
-var data = [{
-  type: "pie",
-  values: values,
-  labels: labelSet,
-  textinfo: "label",
-  insidetextorientation: "radial",
-  automargin: true
-}]
-var layout = [{
-  height: 400,
-  width: 400
-}]
+var trace1 = {
+  x: x1,
+  y: y1,
+  type: 'bar',
+  name: 'Female Participation',
+  marker: {
+    color: 'rgb(255,192,203)',
+    opacity: 0.7,
+  }
+};
+
+var trace2 = {
+    x: x1,
+    y: y2,
+    type: 'bar',
+    name: 'Male Participation',
+    marker: {
+        color: 'rgb(0,0,255)',
+        opacity: 0.5
+    }
+};
+var trace3 = {
+  x: x1,
+  y: y3,
+  type: 'bar',
+  name: 'Mixed Team Participation',
+  marker: {
+    color: 'rgb(145, 81, 240)',
+    opacity: 0.5
+  }
+};
+
+var data = [trace1, trace2,trace3];
+
+var layout = {
+  height: 650,
+  width: 620,
+  title: 'Gender Distribution across Categories',
+  xaxis: {
+    tickangle: -45
+  },
+  barmode: 'group'
+};
+
 Plotly.newPlot('pie_dataviz', data, layout)
 })
 }
-}
+
+function clearPie() {
+        document.getElementById("pie_dataviz").innerHTML = "";
+    }

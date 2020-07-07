@@ -137,6 +137,16 @@ def api_alldealssummary():
     conn.close()
     return jsonify(alldealssummary)
 
+@app.route('/api/v1/deals/sectorgender/summary', methods=['GET'])
+def api_sectorgendersummary():
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = dict_factory
+    cur = conn.cursor()
+    sectorgendersummary = cur.execute("SELECT Category, Female, Male, MixedTeam FROM DealsbyCategoryandGender").fetchall()
+    cur.close()
+    conn.close()
+    return jsonify(sectorgendersummary)
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port,ssl_context='adhoc')
+    app.run(host='0.0.0.0', port=port)

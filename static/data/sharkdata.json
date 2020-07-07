@@ -1,6 +1,8 @@
 {
   "name": "SHARKTANK",
   "img": "../static/Images/Unknown.jpg",
+  "link": "https://en.wikipedia.org/wiki/Shark_Tank",
+  "hero": "Shark Tank Wiki",
   "children": [
     {
       "name": "Big Sharks",
