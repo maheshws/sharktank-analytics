@@ -106,13 +106,13 @@ def api_alldealsbycategoryandgender():
     conn.close()
     return jsonify(alldealsbycategoryandgender)
 
-@app.route('/api/v1/deals/dealsbyshark/<sharkname>', methods=['GET'])
-def api_sharkportfolio(sharkname):
+@app.route('/api/v1/deals/dealsbyshark/portfolio', methods=['GET'])
+def api_sharkportfolio():
     conn = sqlite3.connect(db_path)
     conn.row_factory = dict_factory
     cur = conn.cursor()
-    query = "SELECT * FROM DealsbySharks where Sharks=?"
-    sharkportfolio = cur.execute(query,(sharkname,)).fetchall()
+    query = "SELECT * FROM SharkPortfolio;"
+    sharkportfolio = cur.execute(query).fetchall()
     cur.close()
     conn.close()
     return jsonify(sharkportfolio)

@@ -167,8 +167,6 @@ function click(d) {
   update();
 }
 
-
-
 function flatten(root) {
   var nodes = [];
   var i = 0;
@@ -208,7 +206,7 @@ var svg = d3v4.select("#my_dataviz")
   var body = d3v4.select("#summary-table>tbody");
 
 // Reading the data
-d3v4.json( 'http://localhost:5000/api/v1/deals/sharkscategory/all', function(data) {
+d3v4.json( 'http://host:5000/api/v1/deals/sharkscategory/all', function(data) {
 
   console.log(data);
 
@@ -225,7 +223,7 @@ d3v4.json( 'http://localhost:5000/api/v1/deals/sharkscategory/all', function(dat
 
   // On Click of Category display table
   function renderTable(key){
-    d3v4.json("http://localhost:5000/api/v1/deals/sharkscategory/summary",function(data) {
+    d3v4.json("http://host:5000/api/v1/deals/sharkscategory/summary",function(data) {
       // Empty the table
       console.log(data);
       body.html("")
@@ -250,13 +248,40 @@ d3v4.json( 'http://localhost:5000/api/v1/deals/sharkscategory/all', function(dat
 
   };
 
+  function renderSharkTable(key){
+    d3v4.json("http://host:5000/api/v1/deals/dealsbyshark/portfolio",function(data) {
+      // Empty the table
+      body.html("")
 
+      // Filter based on the selection
+      function filterK(sharkData) {
+        return sharkData.Shark === key;
+      }
+      var filteredData = data.filter(filterK);
 
+      // appending <tr> and <td>
+      filteredData.forEach(function (record) {
+        Object.entries(record).forEach(function ([key, value]) {
+            var row = body.append('tr')
+                          .text(key)
+                          .append('td')
+                          .text(value)
+        });
+     });
+
+    })
+
+  };
   // Drawing the chart
   sharkchart
     .dimension(sharkDim)
     .group(sharkgroup)
     .elasticX(true);
+
+  sharkchart.on('filtered.monitor', function(chart, filter) {
+      // console.log(filter);
+      renderSharkTable(filter);
+    });
 
   sharkCatchart
     .height(400)
@@ -304,4 +329,78 @@ var color = d3.scale.ordinal()
         .outerRadius(radius);
     path.transition().duration(500).attr("d", arc); // redrawing the path with a smooth transition
 })
+}
+function updatePie(driver){
+if (driver=="DealsProposed")
+{
+   d3v4.json("http://host:5000/api/v1/deals/dealsbygender/all",function(data) {
+console.log(data);
+var values = [];
+var labelSet = ["Female","Male","Mixed Teams"];
+data.forEach(function(val){
+    values.push(val.DealsProposed);
+});
+var data = [{
+  type: "pie",
+  values: values,
+  labels: labelSet,
+  textinfo: "label",
+  insidetextorientation: "radial",
+  automargin: true
+}]
+var layout = [{
+  height: 400,
+  width: 400
+}]
+Plotly.newPlot('pie_dataviz', data, layout)
+})
+}
+if (driver=="DealsClosedbyGender")
+{
+   d3v4.json("http://host:5000/api/v1/deals/dealsbygender/all",function(data) {
+console.log(data);
+var values = [];
+var labelSet = ["Female","Male","Mixed Teams"];
+data.forEach(function(val){
+    values.push(val.DealsClosed);
+});
+var data = [{
+  type: "pie",
+  values: values,
+  labels: labelSet,
+  textinfo: "label",
+  insidetextorientation: "radial",
+  automargin: true
+}]
+var layout = [{
+  height: 400,
+  width: 400
+}]
+Plotly.newPlot('pie_dataviz', data, layout)
+})
+}
+if (driver=="DealsbyPercentage")
+{
+   d3v4.json("http://host:5000/api/v1/deals/dealsbygender/all",function(data) {
+console.log(data);
+var values = [];
+var labelSet = ["Female","Male","Mixed Teams"];
+data.forEach(function(val){
+    values.push(val.PercentClosed);
+});
+var data = [{
+  type: "pie",
+  values: values,
+  labels: labelSet,
+  textinfo: "label",
+  insidetextorientation: "radial",
+  automargin: true
+}]
+var layout = [{
+  height: 400,
+  width: 400
+}]
+Plotly.newPlot('pie_dataviz', data, layout)
+})
+}
 }
