@@ -5,7 +5,7 @@ Hello Sharks! Today we will be pitching you our product, Shark Tank Analytics, a
 Our product will enhance knowledge about Shark Tank and add value to the viewing experience. <br />
 Are you ready to dive with us into the tank? 
 
-![readme_images/Shark_Tank.PNG](readme_images/Shark_Tank.PNG)
+![Shark Tank Logo](readme_images/Shark_Tank.png)
 
 ### The American Dream:
 
@@ -17,7 +17,7 @@ The entreupeneurs pitch their products to six Sharks with capital and mentorship
 * `$163 million` invested.<br />
 <br /> 
 
-![readme_images/American_Dream.PNG](readme_images/American_Dream.PNG)
+![American Dream](readme_images/American_Dream.png)
 
 ### The Sharks:
 
@@ -29,7 +29,7 @@ The entreupeneurs pitch their products to six Sharks with capital and mentorship
 `Kevin O'Leary`: Mr. Wonderful, investor that sold his toy company for millions
 
 
-![readme_images/Sharks.PNG](readme_images/Sharks.PNG)
+![Sharks](readme_images/Sharks.png)
 
 ###  Product Development:
 
@@ -41,7 +41,7 @@ The entreupeneurs pitch their products to six Sharks with capital and mentorship
 `Visualizations`: DC Force Layout, Interactive Bar Chart, Animated Histogram, Pie Chart<br />
 `Heroku`: Finished product deployment
 
-![readme_images/Flowchart.PNG](readme_images/Flowchart.PNG)
+![Flowchart](readme_images/Flowchart.png)
 
 ###  The Product Dashboard: https://sharktank-analytics.herokuapp.com/
 
@@ -49,7 +49,7 @@ The entreupeneurs pitch their products to six Sharks with capital and mentorship
 `Lower Left`: Crossfilter Interactive Bar Chart and Animated Histogram, to see the data on categories your favorite Shark has invested in <br />
 `Lower Right`: Pie Chart detailing gender demographics on Shark investments for more analytics on your favorite Shark<br />
 
-![readme_images/Product.PNG](readme_images/Product.PNG)
+![Product](readme_images/Product.png)
 
 ###  Conclusion:
 
@@ -64,4 +64,4 @@ We are open to hearing your offers Shark!<br />
 
 WE'RE OUT!
 
-![readme_images/MarkCuban.PNG](readme_images/MarkCuban.PNG)
+![Mark Cuban](readme_images/MarkCuban.png)
