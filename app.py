@@ -4,10 +4,9 @@ from flask_pymongo import PyMongo
 import sqlite3
 from flask import g , request,jsonify
 from flask_sqlalchemy import SQLAlchemy
-import os.path
+import os.path 
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-db_path = os.path.join(BASE_DIR, "db\\sharktank.sqlite")
+db_path = os.path.join("db", "sharktank.sqlite")
 
 #file_path = os.path.abspath(os.getcwd())+"\data\database.db"
 #DATABASE = 'sqlite:///static\data\podcast.sqlite'
@@ -148,5 +147,4 @@ def api_sectorgendersummary():
     return jsonify(sectorgendersummary)
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run()
