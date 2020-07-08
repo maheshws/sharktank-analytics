@@ -21,7 +21,7 @@ var svg = d3.select("#my_dataviz")
   var body = d3.select("#summary-table>tbody");
 
 // Reading the data
-d3.json( 'http://localhost:5000/api/v1/deals/sharkscategory/all', function(data) {
+d3.json( '/api/v1/deals/sharkscategory/all', function(data) {
 
   console.log(data);
 
@@ -38,7 +38,7 @@ d3.json( 'http://localhost:5000/api/v1/deals/sharkscategory/all', function(data)
 
   // On Click of Category display table
   function renderTable(key){
-    d3.json("http://localhost:5000/api/v1/deals/sharkscategory/summary",function(data) {
+    d3.json("/api/v1/deals/sharkscategory/summary",function(data) {
       // Empty the table
       console.log(data);
       body.html("")

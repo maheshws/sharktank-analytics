@@ -206,7 +206,7 @@ var svg = d3v4.select("#my_dataviz")
   var body = d3v4.select("#summary-table>tbody");
 
 // Reading the data
-d3v4.json( 'http://localhost:5000/api/v1/deals/sharkscategory/all', function(data) {
+d3v4.json("api/v1/deals/sharkscategory/all", function(data) {
 
   console.log(data);
 
@@ -223,7 +223,7 @@ d3v4.json( 'http://localhost:5000/api/v1/deals/sharkscategory/all', function(dat
 
   // On Click of Category display table
   function renderTable(key){
-    d3v4.json("http://localhost:5000/api/v1/deals/sharkscategory/summary",function(data) {
+    d3v4.json("/api/v1/deals/sharkscategory/summary",function(data) {
       // Empty the table
       console.log(data);
       body.html("")
@@ -249,7 +249,7 @@ d3v4.json( 'http://localhost:5000/api/v1/deals/sharkscategory/all', function(dat
   };
 
   function renderSharkTable(key){
-    d3v4.json("http://localhost:5000/api/v1/deals/dealsbyshark/portfolio",function(data) {
+    d3v4.json("/api/v1/deals/dealsbyshark/portfolio",function(data) {
       // Empty the table
       body.html("")
 
@@ -302,7 +302,7 @@ d3v4.json( 'http://localhost:5000/api/v1/deals/sharkscategory/all', function(dat
 
 });
 function change(sharkName) {
-d3.json('https://127.0.0.1:5000/api/v1/deals/dealsbyshark/'+sharkName, function(data) {
+d3.json('/api/v1/deals/dealsbyshark/'+sharkName, function(data) {
   console.log(data);
   var mod_data= [];
       Object.entries(data[0]).forEach(function ([key, value]) {
@@ -341,7 +341,7 @@ function paintPieDataViz()
 
 function updatePie(driver){
 clearPie();
-   d3v4.json("http://localhost:5000/api/v1/deals/dealsbygender/all",function(data) {
+   d3v4.json("/api/v1/deals/dealsbygender/all",function(data) {
 console.log(data);
 var values = [];
 var labelSet = ["Female","Male","Mixed Teams"];
@@ -378,7 +378,7 @@ Plotly.newPlot('pie_dataviz', data, layout)
 
 function updateSeasonBar(){
 clearPie();
-   d3v4.json("http://localhost:5000/api/v1/deals/dealsbyseason/all",function(data) {
+   d3v4.json("/api/v1/deals/dealsbyseason/all",function(data) {
 console.log(data);
 var x1 = [];
 var y1 = [];
@@ -430,7 +430,7 @@ Plotly.newPlot('pie_dataviz', data, layout)
 
 function updateSectorGenderBar(){
 clearPie();
-   d3v4.json("http://localhost:5000/api/v1/deals/sectorgender/summary",function(data) {
+   d3v4.json("/api/v1/deals/sectorgender/summary",function(data) {
 console.log(data);
 var x1 = [];
 var y1 = [];
